@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+@import "tailwindcss";
+
+@plugin "@iconify/tailwind4";
+
+@theme {
+	--color-surface: oklch(20% 0 0);
+}
+
+html {
+	font-family: "Roboto", sans-serif;
+	@apply bg-black text-white;
+}
+
+body {
+	@apply p-4;
+}
+
+a,
+button {
+	@apply cursor-pointer;
+}
+
+input {
+	@apply outline-none;
+}
+
+.col {
+	@apply flex flex-col;
+}
+
+.row {
+	@apply flex flex-row;
+}
+
+.yt-player {
+	width: 1280px;
+	height: 720px;
+
+	min-width: 1280px;
+	min-height: 720px;
+
+	max-width: 1280px;
+	max-height: 720px;
+}

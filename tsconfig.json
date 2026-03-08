@@ -5,10 +5,24 @@
 		"module": "Preserve",
 		"moduleDetection": "force",
 		"jsx": "react-jsx",
+		"jsxImportSource": "preact",
 		"moduleResolution": "bundler",
 		"noEmit": true,
 		"strict": true,
 		"skipLibCheck": true,
-		"paths": { "~/*": ["./src/*"] }
+		"paths": {
+			"~/*": ["./src/*"],
+			"react-dom": ["./node_modules/preact/compat/"],
+			"react-dom/*": ["./node_modules/preact/compat/*"],
+			"react": ["./node_modules/preact/compat/"],
+			"react/jsx-runtime": ["./node_modules/preact/jsx-runtime"]
+		},
+		"plugins": [
+			{
+				"name": "gql.tada/ts-plugin",
+				"schema": "./gql/schema.gql",
+				"tadaOutputLocation": "./src/type/graphql-env.d.ts"
+			}
+		]
 	}
 }

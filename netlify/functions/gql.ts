@@ -1,4 +1,4 @@
-import { yoga } from "~/server/gql/yoga"
+import { yoga } from '~/gql/yoga'
 
 const handler = async (req: Request) => {
 	const res = await yoga.handleRequest(req, {})
@@ -7,4 +7,4 @@ const handler = async (req: Request) => {
 
 export default handler
 
-export const config = { path: "/gql" }
+export const config = { path: '/gql' }

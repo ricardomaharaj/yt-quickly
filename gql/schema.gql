@@ -1,0 +1,97 @@
+type Comment {
+  authorChannelId: String
+  authorChannelUrl: String
+  authorDisplayName: String
+  authorProfileImageUrl: String
+  canRate: Boolean
+  channelId: String
+  likeCount: Float
+  moderationStatus: String
+  parentId: String
+  publishedAt: String
+  textDisplay: String
+  updatedAt: String
+  viewerRating: String
+}
+
+type PlaylistItem {
+  channelId: String
+  channelTitle: String
+  description: String
+  playlistId: String
+  position: Int
+  publishedAt: String
+  thumbnails: Thumbnails
+  title: String
+  videoId: String
+  videoOwnerChannelId: String
+  videoOwnerChannelTitle: String
+}
+
+type PlaylistItemsResponse {
+  items: [PlaylistItem!]
+  nextPageToken: String
+  prevPageToken: String
+}
+
+type Query {
+  channelVideos(channelId: String!, pageToken: String): PlaylistItemsResponse
+  comments(videoId: String!): [Comment!]
+  search(pageToken: String, q: String!): SearchResponse
+  video(id: String!): Video
+}
+
+type SearchResponse {
+  items: [SearchResult!]
+  nextPageToken: String
+  prevPageToken: String
+}
+
+type SearchResult {
+  channelId: String
+  channelTitle: String
+  description: String
+  liveBroadcastContent: String
+  playlistId: String
+  publishedAt: String
+  thumbnails: Thumbnails
+  title: String
+  videoId: String
+}
+
+type Thumbnail {
+  url: String
+}
+
+type Thumbnails {
+  default: Thumbnail
+  high: Thumbnail
+  maxres: Thumbnail
+  medium: Thumbnail
+  standard: Thumbnail
+}
+
+type Video {
+  categoryId: String
+  channelId: String
+  channelTitle: String
+  commentCount: String
+  defaultAudioLanguage: String
+  defaultLanguage: String
+  description: String
+  dislikeCount: String
+  favoriteCount: String
+  likeCount: String
+  liveBroadcastContent: String
+  publishedAt: String
+  tags: [String!]
+  thumbnails: Thumbnails
+  title: String
+  viewCount: String
+}
+
+type VideoResponse {
+  items: [Video!]
+  nextPageToken: String
+  prevPageToken: String
+}

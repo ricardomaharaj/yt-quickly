@@ -1,0 +1,43 @@
+/* eslint-disable */
+/* prettier-ignore */
+
+export type introspection_types = {
+    'Boolean': unknown;
+    'Comment': { kind: 'OBJECT'; name: 'Comment'; fields: { 'authorChannelId': { name: 'authorChannelId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'authorChannelUrl': { name: 'authorChannelUrl'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'authorDisplayName': { name: 'authorDisplayName'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'authorProfileImageUrl': { name: 'authorProfileImageUrl'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'canRate': { name: 'canRate'; type: { kind: 'SCALAR'; name: 'Boolean'; ofType: null; } }; 'channelId': { name: 'channelId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'likeCount': { name: 'likeCount'; type: { kind: 'SCALAR'; name: 'Float'; ofType: null; } }; 'moderationStatus': { name: 'moderationStatus'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'parentId': { name: 'parentId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'publishedAt': { name: 'publishedAt'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'textDisplay': { name: 'textDisplay'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'updatedAt': { name: 'updatedAt'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'viewerRating': { name: 'viewerRating'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; }; };
+    'Float': unknown;
+    'Int': unknown;
+    'PlaylistItem': { kind: 'OBJECT'; name: 'PlaylistItem'; fields: { 'channelId': { name: 'channelId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'channelTitle': { name: 'channelTitle'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'description': { name: 'description'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'playlistId': { name: 'playlistId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'position': { name: 'position'; type: { kind: 'SCALAR'; name: 'Int'; ofType: null; } }; 'publishedAt': { name: 'publishedAt'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'thumbnails': { name: 'thumbnails'; type: { kind: 'OBJECT'; name: 'Thumbnails'; ofType: null; } }; 'title': { name: 'title'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'videoId': { name: 'videoId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'videoOwnerChannelId': { name: 'videoOwnerChannelId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'videoOwnerChannelTitle': { name: 'videoOwnerChannelTitle'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; }; };
+    'PlaylistItemsResponse': { kind: 'OBJECT'; name: 'PlaylistItemsResponse'; fields: { 'items': { name: 'items'; type: { kind: 'LIST'; name: never; ofType: { kind: 'NON_NULL'; name: never; ofType: { kind: 'OBJECT'; name: 'PlaylistItem'; ofType: null; }; }; } }; 'nextPageToken': { name: 'nextPageToken'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'prevPageToken': { name: 'prevPageToken'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; }; };
+    'Query': { kind: 'OBJECT'; name: 'Query'; fields: { 'channelVideos': { name: 'channelVideos'; type: { kind: 'OBJECT'; name: 'PlaylistItemsResponse'; ofType: null; } }; 'comments': { name: 'comments'; type: { kind: 'LIST'; name: never; ofType: { kind: 'NON_NULL'; name: never; ofType: { kind: 'OBJECT'; name: 'Comment'; ofType: null; }; }; } }; 'search': { name: 'search'; type: { kind: 'OBJECT'; name: 'SearchResponse'; ofType: null; } }; 'video': { name: 'video'; type: { kind: 'OBJECT'; name: 'Video'; ofType: null; } }; }; };
+    'SearchResponse': { kind: 'OBJECT'; name: 'SearchResponse'; fields: { 'items': { name: 'items'; type: { kind: 'LIST'; name: never; ofType: { kind: 'NON_NULL'; name: never; ofType: { kind: 'OBJECT'; name: 'SearchResult'; ofType: null; }; }; } }; 'nextPageToken': { name: 'nextPageToken'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'prevPageToken': { name: 'prevPageToken'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; }; };
+    'SearchResult': { kind: 'OBJECT'; name: 'SearchResult'; fields: { 'channelId': { name: 'channelId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'channelTitle': { name: 'channelTitle'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'description': { name: 'description'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'liveBroadcastContent': { name: 'liveBroadcastContent'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'playlistId': { name: 'playlistId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'publishedAt': { name: 'publishedAt'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'thumbnails': { name: 'thumbnails'; type: { kind: 'OBJECT'; name: 'Thumbnails'; ofType: null; } }; 'title': { name: 'title'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'videoId': { name: 'videoId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; }; };
+    'String': unknown;
+    'Thumbnail': { kind: 'OBJECT'; name: 'Thumbnail'; fields: { 'url': { name: 'url'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; }; };
+    'Thumbnails': { kind: 'OBJECT'; name: 'Thumbnails'; fields: { 'default': { name: 'default'; type: { kind: 'OBJECT'; name: 'Thumbnail'; ofType: null; } }; 'high': { name: 'high'; type: { kind: 'OBJECT'; name: 'Thumbnail'; ofType: null; } }; 'maxres': { name: 'maxres'; type: { kind: 'OBJECT'; name: 'Thumbnail'; ofType: null; } }; 'medium': { name: 'medium'; type: { kind: 'OBJECT'; name: 'Thumbnail'; ofType: null; } }; 'standard': { name: 'standard'; type: { kind: 'OBJECT'; name: 'Thumbnail'; ofType: null; } }; }; };
+    'Video': { kind: 'OBJECT'; name: 'Video'; fields: { 'categoryId': { name: 'categoryId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'channelId': { name: 'channelId'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'channelTitle': { name: 'channelTitle'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'commentCount': { name: 'commentCount'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'defaultAudioLanguage': { name: 'defaultAudioLanguage'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'defaultLanguage': { name: 'defaultLanguage'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'description': { name: 'description'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'dislikeCount': { name: 'dislikeCount'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'favoriteCount': { name: 'favoriteCount'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'likeCount': { name: 'likeCount'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'liveBroadcastContent': { name: 'liveBroadcastContent'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'publishedAt': { name: 'publishedAt'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'tags': { name: 'tags'; type: { kind: 'LIST'; name: never; ofType: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; }; } }; 'thumbnails': { name: 'thumbnails'; type: { kind: 'OBJECT'; name: 'Thumbnails'; ofType: null; } }; 'title': { name: 'title'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'viewCount': { name: 'viewCount'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; }; };
+    'VideoResponse': { kind: 'OBJECT'; name: 'VideoResponse'; fields: { 'items': { name: 'items'; type: { kind: 'LIST'; name: never; ofType: { kind: 'NON_NULL'; name: never; ofType: { kind: 'OBJECT'; name: 'Video'; ofType: null; }; }; } }; 'nextPageToken': { name: 'nextPageToken'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'prevPageToken': { name: 'prevPageToken'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; }; };
+};
+
+/** An IntrospectionQuery representation of your schema.
+ *
+ * @remarks
+ * This is an introspection of your schema saved as a file by GraphQLSP.
+ * It will automatically be used by `gql.tada` to infer the types of your GraphQL documents.
+ * If you need to reuse this data or update your `scalars`, update `tadaOutputLocation` to
+ * instead save to a .ts instead of a .d.ts file.
+ */
+export type introspection = {
+  name: never;
+  query: 'Query';
+  mutation: never;
+  subscription: never;
+  types: introspection_types;
+};
+
+import * as gqlTada from 'gql.tada';
+
+declare module 'gql.tada' {
+  interface setupSchema {
+    introspection: introspection
+  }
+}

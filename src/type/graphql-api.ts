@@ -1,4 +1,18 @@
 export namespace GQL_API {
+	/* THUMBNAILS */
+	export type Thumbnail = {
+		url: string
+	}
+
+	export type Thumbnails = {
+		default?: Thumbnail
+		high?: Thumbnail
+		maxres?: Thumbnail
+		medium?: Thumbnail
+		standard?: Thumbnail
+	}
+
+	/* SEARCH */
 	export type SearchResult = {
 		// ID
 		playlistId?: string
@@ -10,10 +24,17 @@ export namespace GQL_API {
 		description?: string
 		liveBroadcastContent?: string
 		publishedAt?: string
-		thumbnailUrl?: string
+		thumbnails?: Thumbnails
 		title?: string
 	}
 
+	export type SearchResponse = {
+		nextPageToken?: string
+		prevPageToken?: string
+		items: SearchResult[]
+	}
+
+	/* COMMENT */
 	export type Comment = {
 		// SNIPPET
 		authorChannelId?: string
@@ -27,11 +48,11 @@ export namespace GQL_API {
 		parentId?: string
 		publishedAt?: string
 		textDisplay?: string
-		textOriginal?: string
 		updatedAt?: string
 		viewerRating?: string
 	}
 
+	/* VIDEO */
 	export type Video = {
 		// SNIPPET
 		categoryId?: string
@@ -43,19 +64,10 @@ export namespace GQL_API {
 		liveBroadcastContent?: string
 		publishedAt?: string
 		tags?: string[]
-		thumbnailUrl?: string
+		thumbnails?: Thumbnails
 		title?: string
 
-		// CONTENT DETAILS
-		caption?: string
-		definition?: string
-		dimension?: string
-		duration?: string
-		hasCustomThumbnail?: boolean
-		licensedContent?: boolean
-		projection?: string
-
-		// STATISTICS
+		// STATS
 		commentCount?: string
 		dislikeCount?: string
 		favoriteCount?: string
@@ -63,26 +75,13 @@ export namespace GQL_API {
 		viewCount?: string
 	}
 
-	export type Channel = {
-		// SNIPPET
-		country?: string
-		customUrl?: string
-		defaultLanguage?: string
-		description?: string
-		publishedAt?: string
-		thumbnailUrl?: string
-		title?: string
-
-		// CONTENT DETAILS
-		uploadsPlaylist?: string
-
-		// STATISTICS
-		hiddenSubscriberCount?: boolean
-		subscriberCount?: number
-		videoCount?: number
-		viewCount?: number
+	export type VideoResponse = {
+		nextPageToken?: string
+		prevPageToken?: string
+		items: Video[]
 	}
 
+	/* PLAYLIST */
 	export type PlaylistItem = {
 		// SNIPPET
 		channelId: string
@@ -91,12 +90,16 @@ export namespace GQL_API {
 		playlistId: string
 		position: number
 		publishedAt: string
-		thumbnailUrl: string
+		thumbnails: Thumbnails
 		title: string
+		videoId: string
 		videoOwnerChannelId: string
 		videoOwnerChannelTitle: string
+	}
 
-		//
-		videoId: string
+	export type PlaylistItemsResponse = {
+		nextPageToken?: string
+		prevPageToken?: string
+		items: PlaylistItem[]
 	}
 }

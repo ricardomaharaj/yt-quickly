@@ -13,14 +13,14 @@
 		"indentStyle": "tab"
 	},
 	"linter": {
-		"enabled": false,
-		"rules": {
-			"recommended": true
-		}
+		"enabled": false
 	},
 	"javascript": {
 		"formatter": {
-			"semicolons": "asNeeded"
+			"jsxQuoteStyle": "single",
+			"quoteStyle": "single",
+			"semicolons": "asNeeded",
+			"trailingCommas": "all"
 		}
 	},
 	"css": {
@@ -29,7 +29,7 @@
 		}
 	},
 	"assist": {
-		"enabled": false,
+		"enabled": true,
 		"actions": {
 			"source": {
 				"organizeImports": "on"
