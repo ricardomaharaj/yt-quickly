@@ -1,6 +1,7 @@
 import { GQL_API } from '~/type/graphql-api'
 import { YouTube_API } from '~/type/youtube-api'
 import { builder } from '../builder'
+import { GQLError } from '../util/gql-errors'
 import { ytFetch } from '../util/yt-fetch'
 
 builder.queryFields((t) => ({
@@ -10,9 +11,11 @@ builder.queryFields((t) => ({
 			id: t.arg.string({ required: true }),
 		},
 		resolve: async (_, args) => {
+			if (!args.id) throw GQLError()
+
 			const params = new URLSearchParams({
-				part: 'snippet,statistics',
 				id: args.id,
+				part: 'snippet,statistics',
 			})
 
 			const res = await ytFetch<YouTube_API.VideoListResponse>(
@@ -33,7 +36,7 @@ builder.queryFields((t) => ({
 				liveBroadcastContent: vid?.snippet.liveBroadcastContent,
 				publishedAt: vid?.snippet.publishedAt,
 				tags: vid?.snippet.tags,
-				thumbnails: vid?.snippet.thumbnails,
+				thumbnailUrl: vid?.snippet.thumbnails.default.url,
 				title: vid?.snippet.title,
 
 				// STATS

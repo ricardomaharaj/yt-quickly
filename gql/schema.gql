@@ -1,11 +1,21 @@
+type Channel {
+  country: String
+  customUrl: String
+  defaultLanguage: String
+  description: String
+  publishedAt: String
+  thumbnailUrl: String
+  title: String
+  uploadsPlaylist: String
+}
+
 type Comment {
   authorChannelId: String
   authorChannelUrl: String
   authorDisplayName: String
   authorProfileImageUrl: String
-  canRate: Boolean
   channelId: String
-  likeCount: Float
+  likeCount: String
   moderationStatus: String
   parentId: String
   publishedAt: String
@@ -19,9 +29,9 @@ type PlaylistItem {
   channelTitle: String
   description: String
   playlistId: String
-  position: Int
+  position: String
   publishedAt: String
-  thumbnails: Thumbnails
+  thumbnailUrl: String
   title: String
   videoId: String
   videoOwnerChannelId: String
@@ -35,8 +45,9 @@ type PlaylistItemsResponse {
 }
 
 type Query {
-  channelVideos(channelId: String!, pageToken: String): PlaylistItemsResponse
+  channel(channelId: String!): Channel
   comments(videoId: String!): [Comment!]
+  playlist(pageToken: String, playlistId: String!): PlaylistItemsResponse
   search(pageToken: String, q: String!): SearchResponse
   video(id: String!): Video
 }
@@ -54,21 +65,9 @@ type SearchResult {
   liveBroadcastContent: String
   playlistId: String
   publishedAt: String
-  thumbnails: Thumbnails
+  thumbnailUrl: String
   title: String
   videoId: String
-}
-
-type Thumbnail {
-  url: String
-}
-
-type Thumbnails {
-  default: Thumbnail
-  high: Thumbnail
-  maxres: Thumbnail
-  medium: Thumbnail
-  standard: Thumbnail
 }
 
 type Video {
@@ -85,7 +84,7 @@ type Video {
   liveBroadcastContent: String
   publishedAt: String
   tags: [String!]
-  thumbnails: Thumbnails
+  thumbnailUrl: String
   title: String
   viewCount: String
 }

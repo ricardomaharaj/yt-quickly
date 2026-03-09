@@ -7,22 +7,26 @@ import { videoIdAtom } from '~/app/atom/video-id-atom'
 import { Pager } from '~/app/lib/pager'
 import { VideoCard } from '~/app/lib/ui/video-card'
 
-const CHANNEL_VIDEOS_QUERY = graphql(`
-  query ($channelId: String!, $pageToken: String!) {
-    channelVideos(channelId: $channelId, pageToken: $pageToken) {
-      nextPageToken
-      prevPageToken
-      items {
-        title
-        videoId
-        thumbnails {
-          default {
-            url
-          }
-        }
-      }
-    }
-  }
+const CHANNEL_QUERY = graphql(`
+	query ($channelId: String!) {
+		channel(channelId: $channelId) {
+			uploadsPlaylist
+		}
+	}
+`)
+
+const UPLOADS_QUERY = graphql(`
+	query ($playlistId: String!, $pageToken: String) {
+		playlist(playlistId: $playlistId, pageToken: $pageToken) {
+			nextPageToken
+			prevPageToken
+			items {
+				thumbnailUrl
+				title
+				videoId
+			}
+		}
+	}
 `)
 
 export function ChannelPane() {
@@ -30,18 +34,29 @@ export function ChannelPane() {
 	const [channelId, setChannelId] = useAtom(channelIdAtom)
 	const [pageToken, setPageToken] = useAtom(channelPageAtom)
 
-	const [res] = useQuery({
-		query: CHANNEL_VIDEOS_QUERY,
+	const [channelRes] = useQuery({
+		query: CHANNEL_QUERY,
 		variables: {
 			channelId: channelId,
+		},
+	})
+
+	const playlistId = channelRes.data?.channel?.uploadsPlaylist
+
+	const [uploadsRes] = useQuery({
+		query: UPLOADS_QUERY,
+		variables: {
+			playlistId: playlistId!,
 			pageToken: pageToken,
 		},
 	})
 
-	const nextPageToken = res?.data?.channelVideos?.nextPageToken
-	const prevPageToken = res?.data?.channelVideos?.prevPageToken
+	const playlist = uploadsRes.data?.playlist
 
-	const vids = res?.data?.channelVideos?.items
+	const nextPageToken = playlist?.nextPageToken
+	const prevPageToken = playlist?.prevPageToken
+
+	const vids = playlist?.items
 
 	return (
 		<>
@@ -49,7 +64,7 @@ export function ChannelPane() {
 				<div className='grid grid-cols-3 gap-2'>
 					{vids?.map((x) => (
 						<VideoCard
-							img={x.thumbnails?.default?.url}
+							img={x.thumbnailUrl}
 							pri={x.title}
 							onClick={() => setVideoId(x.videoId || '')}
 						/>

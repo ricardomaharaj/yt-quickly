@@ -12,7 +12,7 @@ builder.objectType('Video', {
 		liveBroadcastContent: t.exposeString('liveBroadcastContent'),
 		publishedAt: t.exposeString('publishedAt'),
 		tags: t.exposeStringList('tags'),
-		thumbnails: t.expose('thumbnails', { type: 'Thumbnails' }),
+		thumbnailUrl: t.exposeString('thumbnailUrl'),
 		title: t.exposeString('title'),
 
 		// STATS

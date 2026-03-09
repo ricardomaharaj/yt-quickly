@@ -4,7 +4,7 @@ import { Icon } from '~/app/const/icon'
 type Props = {
 	author?: string | null
 	body?: string | null
-	likeCount?: number | null
+	likeCount?: string | null
 	publishedAt?: string | null
 }
 

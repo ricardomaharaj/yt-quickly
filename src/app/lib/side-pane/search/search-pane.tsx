@@ -20,11 +20,7 @@ const SEARCH_QUERY = graphql(`
 				channelTitle
 				title
 				videoId
-				thumbnails {
-					default {
-						url
-					}
-				}
+				thumbnailUrl
 			}
 		}
 	}
@@ -76,7 +72,7 @@ export function SearchPane() {
 				<div className='grid grid-cols-3 gap-2'>
 					{vids?.map((x) => (
 						<VideoCard
-							img={x.thumbnails?.default?.url}
+							img={x.thumbnailUrl}
 							pri={x.title}
 							sec={x.channelTitle}
 							onClick={() => {

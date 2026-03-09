@@ -12,7 +12,7 @@ builder.objectType('SearchResult', {
 		description: t.exposeString('description'),
 		liveBroadcastContent: t.exposeString('liveBroadcastContent'),
 		publishedAt: t.exposeString('publishedAt'),
-		thumbnails: t.expose('thumbnails', { type: 'Thumbnails' }),
+		thumbnailUrl: t.exposeString('thumbnailUrl'),
 		title: t.exposeString('title'),
 	}),
 })

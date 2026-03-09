@@ -48,9 +48,8 @@ export namespace YouTube_API {
 			authorChannelUrl: string
 			authorDisplayName: string
 			authorProfileImageUrl: string
-			canRate: boolean
 			channelId: string
-			likeCount: number
+			likeCount: string
 			moderationStatus: string
 			parentId: string
 			publishedAt: string
@@ -68,7 +67,7 @@ export namespace YouTube_API {
 			channelId: string
 			isPublic: boolean
 			topLevelComment: Comment
-			totalReplyCount: number
+			totalReplyCount: string
 			videoId: string
 		}
 	}
@@ -149,7 +148,7 @@ export namespace YouTube_API {
 			channelTitle: string
 			description: string
 			playlistId: string
-			position: number
+			position: string
 			publishedAt: string
 			thumbnails: Thumbnails
 			title: string

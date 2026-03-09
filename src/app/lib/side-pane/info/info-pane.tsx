@@ -1,16 +1,12 @@
 import { graphql } from 'gql.tada'
 import { useAtom } from 'jotai'
 import { useQuery } from 'urql'
-import { channelIdAtom } from '~/app/atom/channel-id-atom'
-import { tabAtom } from '~/app/atom/tab-atom'
 import { videoIdAtom } from '~/app/atom/video-id-atom'
 import { Icon } from '~/app/const/icon'
-import { Tab } from '~/app/const/tab'
 
 const VIDEO_QUERY = graphql(`
 	query ($id: String!) {
 		video(id: $id) {
-			channelId
 			channelTitle
 			description
 			publishedAt
@@ -24,8 +20,6 @@ const VIDEO_QUERY = graphql(`
 
 export function InfoPane() {
 	const [videoId, setVideoId] = useAtom(videoIdAtom)
-	const [channelId, setChannelId] = useAtom(channelIdAtom)
-	const [tab, setTab] = useAtom(tabAtom)
 
 	const [res] = useQuery({
 		query: VIDEO_QUERY,
@@ -40,18 +34,14 @@ export function InfoPane() {
 		<>
 			<div className='col bg-surface p-4 max-h-[800px] overflow-scroll'>
 				<div className='row'>
-					<div className='text-xl line-clamp-2'>{vid?.title}</div>
+					<div className='text-xl line-clamp-2' title={vid?.title || ''}>
+						{vid?.title}
+					</div>
 				</div>
 
-				<button
-					className='row'
-					onClick={() => {
-						setChannelId(vid?.channelId || '')
-						setTab(Tab.CHANNEL)
-					}}
-				>
+				<div className='row'>
 					<div className='line-clamp-1'>{vid?.channelTitle}</div>
-				</button>
+				</div>
 
 				<div className='my-2' />
 

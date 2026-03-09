@@ -8,7 +8,11 @@ type Props = {
 export function VideoCard(props: Props) {
 	return (
 		<>
-			<button className='col bg-surface' onClick={props.onClick}>
+			<button
+				className='col bg-surface'
+				onClick={props.onClick}
+				title={props.pri || ''}
+			>
 				<div
 					className='aspect-video bg-center bg-cover'
 					style={{ backgroundImage: `url(${props.img})` }}

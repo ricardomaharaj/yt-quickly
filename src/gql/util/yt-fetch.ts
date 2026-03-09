@@ -7,9 +7,9 @@ export async function ytFetch<T = unknown>(
 	params: URLSearchParams,
 ) {
 	params.append('key', env.GOOGLE_API_KEY)
-	const res = await fetch(`${BASE_API_URL}${path}?${params}`, {
-		cache: 'force-cache',
-	})
+	const url = `${BASE_API_URL}${path}?${params}`
+	const res = await fetch(url, { cache: 'force-cache' })
+	console.log(`GET ${res.status} ${res.url}`)
 	const data = await res.json()
 	return data as T
 }

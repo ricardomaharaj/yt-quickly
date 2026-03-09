@@ -5,45 +5,43 @@ import { GQLError } from '../util/gql-errors'
 import { ytFetch } from '../util/yt-fetch'
 
 builder.queryFields((t) => ({
-	search: t.field({
-		type: 'SearchResponse',
+	playlist: t.field({
+		type: 'PlaylistItemsResponse',
 		args: {
+			playlistId: t.arg.string({ required: true }),
 			pageToken: t.arg.string(),
-			q: t.arg.string({ required: true }),
 		},
 		resolve: async (_, args) => {
-			if (!args.q) throw GQLError()
+			if (!args.playlistId) throw GQLError()
 
 			const params = new URLSearchParams({
 				maxResults: '50',
-				part: 'id,snippet',
-				q: args.q,
-				type: 'video',
+				part: 'snippet',
+				playlistId: args.playlistId,
 			})
 
 			if (args.pageToken) params.append('pageToken', args.pageToken)
 
-			const res = await ytFetch<YouTube_API.SearchListResponse>(
-				'/search',
+			const res = await ytFetch<YouTube_API.PlaylistItemsResponse>(
+				`/playlistItems`,
 				params,
 			)
 
-			const items: GQL_API.SearchResult[] = res?.items?.map((x) => ({
-				// ID
-				playlistId: x.id.playlistId,
-				videoId: x.id.videoId,
-
-				// SNIPPET
+			const items: GQL_API.PlaylistItem[] = res?.items?.map((x) => ({
 				channelId: x.snippet.channelId,
 				channelTitle: x.snippet.channelTitle,
 				description: x.snippet.description,
-				liveBroadcastContent: x.snippet.liveBroadcastContent,
+				playlistId: x.snippet.playlistId,
+				position: x.snippet.position,
 				publishedAt: x.snippet.publishedAt,
 				thumbnailUrl: x.snippet.thumbnails.default.url,
 				title: x.snippet.title,
+				videoId: x.snippet.resourceId.videoId,
+				videoOwnerChannelId: x.snippet.videoOwnerChannelId,
+				videoOwnerChannelTitle: x.snippet.videoOwnerChannelTitle,
 			}))
 
-			const data: GQL_API.SearchResponse = {
+			const data: GQL_API.PlaylistItemsResponse = {
 				nextPageToken: res?.nextPageToken,
 				prevPageToken: res?.prevPageToken,
 				items: items,

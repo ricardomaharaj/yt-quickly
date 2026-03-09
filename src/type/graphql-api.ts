@@ -1,17 +1,4 @@
 export namespace GQL_API {
-	/* THUMBNAILS */
-	export type Thumbnail = {
-		url: string
-	}
-
-	export type Thumbnails = {
-		default?: Thumbnail
-		high?: Thumbnail
-		maxres?: Thumbnail
-		medium?: Thumbnail
-		standard?: Thumbnail
-	}
-
 	/* SEARCH */
 	export type SearchResult = {
 		// ID
@@ -24,7 +11,7 @@ export namespace GQL_API {
 		description?: string
 		liveBroadcastContent?: string
 		publishedAt?: string
-		thumbnails?: Thumbnails
+		thumbnailUrl?: string
 		title?: string
 	}
 
@@ -41,9 +28,8 @@ export namespace GQL_API {
 		authorChannelUrl?: string
 		authorDisplayName?: string
 		authorProfileImageUrl?: string
-		canRate?: boolean
 		channelId?: string
-		likeCount?: number
+		likeCount?: string
 		moderationStatus?: string
 		parentId?: string
 		publishedAt?: string
@@ -64,7 +50,7 @@ export namespace GQL_API {
 		liveBroadcastContent?: string
 		publishedAt?: string
 		tags?: string[]
-		thumbnails?: Thumbnails
+		thumbnailUrl?: string
 		title?: string
 
 		// STATS
@@ -81,20 +67,35 @@ export namespace GQL_API {
 		items: Video[]
 	}
 
+	/* CHANNEL */
+	export type Channel = {
+		// SNIPPET
+		country?: string
+		customUrl?: string
+		defaultLanguage?: string
+		description?: string
+		publishedAt?: string
+		thumbnailUrl?: string
+		title?: string
+
+		// CONTENT DETAILS
+		uploadsPlaylist?: string
+	}
+
 	/* PLAYLIST */
 	export type PlaylistItem = {
 		// SNIPPET
-		channelId: string
-		channelTitle: string
-		description: string
-		playlistId: string
-		position: number
-		publishedAt: string
-		thumbnails: Thumbnails
-		title: string
-		videoId: string
-		videoOwnerChannelId: string
-		videoOwnerChannelTitle: string
+		channelId?: string
+		channelTitle?: string
+		description?: string
+		playlistId?: string
+		position?: string
+		publishedAt?: string
+		thumbnailUrl?: string
+		title?: string
+		videoId?: string
+		videoOwnerChannelId?: string
+		videoOwnerChannelTitle?: string
 	}
 
 	export type PlaylistItemsResponse = {

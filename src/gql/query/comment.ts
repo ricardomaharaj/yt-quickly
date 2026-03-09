@@ -1,6 +1,7 @@
 import { GQL_API } from '~/type/graphql-api'
 import { YouTube_API } from '~/type/youtube-api'
 import { builder } from '../builder'
+import { GQLError } from '../util/gql-errors'
 import { ytFetch } from '../util/yt-fetch'
 
 builder.queryFields((t) => ({
@@ -10,12 +11,14 @@ builder.queryFields((t) => ({
 			videoId: t.arg.string({ required: true }),
 		},
 		resolve: async (_, args) => {
+			if (!args.videoId) throw GQLError()
+
 			const params = new URLSearchParams({
-				part: 'snippet',
-				videoId: args.videoId,
 				maxResults: '24',
 				order: 'relevance',
+				part: 'snippet',
 				textFormat: 'plainText',
+				videoId: args.videoId,
 			})
 
 			const res = await ytFetch<YouTube_API.CommentThreadListResponse>(
@@ -30,7 +33,6 @@ builder.queryFields((t) => ({
 				authorDisplayName: x.snippet.topLevelComment.snippet.authorDisplayName,
 				authorProfileImageUrl:
 					x.snippet.topLevelComment.snippet.authorProfileImageUrl,
-				canRate: x.snippet.topLevelComment.snippet.canRate,
 				channelId: x.snippet.topLevelComment.snippet.channelId,
 				likeCount: x.snippet.topLevelComment.snippet.likeCount,
 				moderationStatus: x.snippet.topLevelComment.snippet.moderationStatus,
