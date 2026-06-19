@@ -8,5 +8,5 @@ function getEnvVar(key: string) {
 }
 
 export const env = {
-	GOOGLE_API_KEY: getEnvVar('GOOGLE_API_KEY'),
+	GOOGLE_API_KEY: getEnvVar("GOOGLE_API_KEY"),
 }

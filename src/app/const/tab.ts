@@ -1,10 +1,10 @@
-import { Icon } from './icon'
+import { Icon } from "./icon"
 
 export enum Tab {
-	CHANNEL = 'CHANNEL',
-	COMMENTS = 'COMMENTS',
-	INFO = 'INFO',
-	SEARCH = 'SEARCH',
+	CHANNEL = "CHANNEL",
+	COMMENTS = "COMMENTS",
+	INFO = "INFO",
+	SEARCH = "SEARCH",
 }
 
 export const TAB_ICONS: Record<Tab, Icon> = {

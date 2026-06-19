@@ -1,12 +1,12 @@
-import { GQL_API } from '~/type/graphql-api'
-import { YouTube_API } from '~/type/youtube-api'
-import { builder } from '../builder'
-import { GQLError } from '../util/gql-errors'
-import { ytFetch } from '../util/yt-fetch'
+import { GQL_API } from "~/type/graphql-api"
+import { YouTube_API } from "~/type/youtube-api"
+import { builder } from "../builder"
+import { GQLError } from "../util/gql-errors"
+import { ytFetch } from "../util/yt-fetch"
 
 builder.queryFields((t) => ({
 	channel: t.field({
-		type: 'Channel',
+		type: "Channel",
 		args: {
 			channelId: t.arg.string({ required: true }),
 		},
@@ -15,11 +15,11 @@ builder.queryFields((t) => ({
 
 			const channelParams = new URLSearchParams({
 				id: args.channelId,
-				part: 'snippet,contentDetails',
+				part: "snippet,contentDetails",
 			})
 
 			const channelRes = await ytFetch<YouTube_API.ChannelListResponse>(
-				'/channels',
+				"/channels",
 				channelParams,
 			)
 

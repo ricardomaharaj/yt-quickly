@@ -17,10 +17,7 @@
 	},
 	"javascript": {
 		"formatter": {
-			"jsxQuoteStyle": "single",
-			"quoteStyle": "single",
-			"semicolons": "asNeeded",
-			"trailingCommas": "all"
+			"semicolons": "asNeeded"
 		}
 	},
 	"css": {

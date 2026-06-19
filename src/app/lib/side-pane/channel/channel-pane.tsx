@@ -1,11 +1,11 @@
-import { graphql } from 'gql.tada'
-import { useAtom } from 'jotai'
-import { useQuery } from 'urql'
-import { channelIdAtom } from '~/app/atom/channel-id-atom'
-import { channelPageAtom } from '~/app/atom/channel-page-atom'
-import { videoIdAtom } from '~/app/atom/video-id-atom'
-import { Pager } from '~/app/lib/pager'
-import { VideoCard } from '~/app/lib/ui/video-card'
+import { graphql } from "gql.tada"
+import { useAtom } from "jotai"
+import { useQuery } from "urql"
+import { channelIdAtom } from "~/app/atom/channel-id-atom"
+import { channelPageAtom } from "~/app/atom/channel-page-atom"
+import { videoIdAtom } from "~/app/atom/video-id-atom"
+import { Pager } from "~/app/lib/pager"
+import { VideoCard } from "~/app/lib/ui/video-card"
 
 const CHANNEL_QUERY = graphql(`
 	query ($channelId: String!) {
@@ -60,13 +60,13 @@ export function ChannelPane() {
 
 	return (
 		<>
-			<div className='col max-h-[750px] overflow-scroll'>
-				<div className='grid grid-cols-3 gap-2'>
+			<div className="col max-h-[750px] overflow-scroll">
+				<div className="grid grid-cols-3 gap-2">
 					{vids?.map((x) => (
 						<VideoCard
 							img={x.thumbnailUrl}
 							pri={x.title}
-							onClick={() => setVideoId(x.videoId || '')}
+							onClick={() => setVideoId(x.videoId || "")}
 						/>
 					))}
 				</div>
@@ -74,8 +74,8 @@ export function ChannelPane() {
 
 			{vids?.length ? (
 				<Pager
-					onPageLeft={() => setPageToken(prevPageToken || '')}
-					onPageRight={() => setPageToken(nextPageToken || '')}
+					onPageLeft={() => setPageToken(prevPageToken || "")}
+					onPageRight={() => setPageToken(nextPageToken || "")}
 				/>
 			) : null}
 		</>

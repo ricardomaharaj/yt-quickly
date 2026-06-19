@@ -1,12 +1,12 @@
-import { GQL_API } from '~/type/graphql-api'
-import { YouTube_API } from '~/type/youtube-api'
-import { builder } from '../builder'
-import { GQLError } from '../util/gql-errors'
-import { ytFetch } from '../util/yt-fetch'
+import { GQL_API } from "~/type/graphql-api"
+import { YouTube_API } from "~/type/youtube-api"
+import { builder } from "../builder"
+import { GQLError } from "../util/gql-errors"
+import { ytFetch } from "../util/yt-fetch"
 
 builder.queryFields((t) => ({
 	playlist: t.field({
-		type: 'PlaylistItemsResponse',
+		type: "PlaylistItemsResponse",
 		args: {
 			playlistId: t.arg.string({ required: true }),
 			pageToken: t.arg.string(),
@@ -15,12 +15,12 @@ builder.queryFields((t) => ({
 			if (!args.playlistId) throw GQLError()
 
 			const params = new URLSearchParams({
-				maxResults: '50',
-				part: 'snippet',
+				maxResults: "50",
+				part: "snippet",
 				playlistId: args.playlistId,
 			})
 
-			if (args.pageToken) params.append('pageToken', args.pageToken)
+			if (args.pageToken) params.append("pageToken", args.pageToken)
 
 			const res = await ytFetch<YouTube_API.PlaylistItemsResponse>(
 				`/playlistItems`,

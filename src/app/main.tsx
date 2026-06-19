@@ -1,6 +1,6 @@
-import { render } from 'preact'
-import { App } from './app'
+import { render } from "preact"
+import { App } from "./app"
 
-import './style.css'
+import "./style.css"
 
-render(<App />, document.getElementById('app')!)
+render(<App />, document.getElementById("app")!)

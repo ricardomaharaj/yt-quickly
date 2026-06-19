@@ -1,7 +1,7 @@
-import { cacheExchange, createClient, fetchExchange } from 'urql'
+import { cacheExchange, createClient, fetchExchange } from "urql"
 
 export const urqlClient = createClient({
-	url: '/gql',
+	url: "/gql",
 	exchanges: [cacheExchange, fetchExchange],
 	preferGetMethod: false,
 })

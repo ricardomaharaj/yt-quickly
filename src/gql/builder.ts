@@ -1,5 +1,5 @@
-import Builder from '@pothos/core'
-import { GQL_API } from '~/type/graphql-api'
+import Builder from "@pothos/core"
+import { GQL_API } from "~/type/graphql-api"
 
 type TBuilder = {
 	Objects: {

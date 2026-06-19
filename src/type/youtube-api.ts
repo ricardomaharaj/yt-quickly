@@ -14,7 +14,7 @@ export namespace YouTube_API {
 
 	/* SEARCH */
 	export type SearchResult = {
-		kind: 'youtube#searchResult'
+		kind: "youtube#searchResult"
 		id: {
 			channelId: string
 			kind: string
@@ -33,7 +33,7 @@ export namespace YouTube_API {
 	}
 
 	export type SearchListResponse = {
-		kind: 'youtube#searchListResponse'
+		kind: "youtube#searchListResponse"
 		nextPageToken: string
 		prevPageToken: string
 		items: SearchResult[]
@@ -41,7 +41,7 @@ export namespace YouTube_API {
 
 	/* COMMENT */
 	export type Comment = {
-		kind: 'youtube#comment'
+		kind: "youtube#comment"
 		id: string
 		snippet: {
 			authorChannelId: { value: string }
@@ -60,7 +60,7 @@ export namespace YouTube_API {
 	}
 
 	export type CommentThread = {
-		kind: 'youtube#commentThread'
+		kind: "youtube#commentThread"
 		id: string
 		snippet: {
 			canReply: boolean
@@ -73,13 +73,13 @@ export namespace YouTube_API {
 	}
 
 	export type CommentThreadListResponse = {
-		kind: 'youtube#commentThreadListResponse'
+		kind: "youtube#commentThreadListResponse"
 		items: CommentThread[]
 	}
 
 	/* VIDEO */
 	export type Video = {
-		kind: 'youtube#video'
+		kind: "youtube#video"
 		id: string
 		snippet: {
 			categoryId: string
@@ -104,7 +104,7 @@ export namespace YouTube_API {
 	}
 
 	export type VideoListResponse = {
-		kind: 'youtube#videoListResponse'
+		kind: "youtube#videoListResponse"
 		nextPageToken: string
 		prevPageToken: string
 		items: Video[]
@@ -112,7 +112,7 @@ export namespace YouTube_API {
 
 	/* CHANNEL */
 	export type Channel = {
-		kind: 'youtube#channel'
+		kind: "youtube#channel"
 		id: string
 		snippet: {
 			country: string
@@ -133,7 +133,7 @@ export namespace YouTube_API {
 	}
 
 	export type ChannelListResponse = {
-		kind: 'youtube#channelListResponse'
+		kind: "youtube#channelListResponse"
 		nextPageToken: string
 		prevPageToken: string
 		items: Channel[]
@@ -141,7 +141,7 @@ export namespace YouTube_API {
 
 	/* PLAYLIST */
 	export type PlaylistItem = {
-		kind: 'youtube#playlistItem'
+		kind: "youtube#playlistItem"
 		id: string
 		snippet: {
 			channelId: string
@@ -162,7 +162,7 @@ export namespace YouTube_API {
 	}
 
 	export type PlaylistItemsResponse = {
-		kind: 'youtube#playlistItemListResponse'
+		kind: "youtube#playlistItemListResponse"
 		nextPageToken: string
 		prevPageToken: string
 		items: PlaylistItem[]

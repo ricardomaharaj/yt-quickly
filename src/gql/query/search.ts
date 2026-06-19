@@ -1,12 +1,12 @@
-import { GQL_API } from '~/type/graphql-api'
-import { YouTube_API } from '~/type/youtube-api'
-import { builder } from '../builder'
-import { GQLError } from '../util/gql-errors'
-import { ytFetch } from '../util/yt-fetch'
+import { GQL_API } from "~/type/graphql-api"
+import { YouTube_API } from "~/type/youtube-api"
+import { builder } from "../builder"
+import { GQLError } from "../util/gql-errors"
+import { ytFetch } from "../util/yt-fetch"
 
 builder.queryFields((t) => ({
 	search: t.field({
-		type: 'SearchResponse',
+		type: "SearchResponse",
 		args: {
 			pageToken: t.arg.string(),
 			q: t.arg.string({ required: true }),
@@ -15,16 +15,16 @@ builder.queryFields((t) => ({
 			if (!args.q) throw GQLError()
 
 			const params = new URLSearchParams({
-				maxResults: '50',
-				part: 'id,snippet',
+				maxResults: "50",
+				part: "id,snippet",
 				q: args.q,
-				type: 'video',
+				type: "video",
 			})
 
-			if (args.pageToken) params.append('pageToken', args.pageToken)
+			if (args.pageToken) params.append("pageToken", args.pageToken)
 
 			const res = await ytFetch<YouTube_API.SearchListResponse>(
-				'/search',
+				"/search",
 				params,
 			)
 

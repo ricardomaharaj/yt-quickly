@@ -1,5 +1,5 @@
-import { GraphQLError } from 'graphql'
+import { GraphQLError } from "graphql"
 
 export function GQLError(msg?: string) {
-	return new GraphQLError(msg ?? 'ERROR')
+	return new GraphQLError(msg ?? "ERROR")
 }

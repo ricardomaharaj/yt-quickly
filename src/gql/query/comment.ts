@@ -1,12 +1,12 @@
-import { GQL_API } from '~/type/graphql-api'
-import { YouTube_API } from '~/type/youtube-api'
-import { builder } from '../builder'
-import { GQLError } from '../util/gql-errors'
-import { ytFetch } from '../util/yt-fetch'
+import { GQL_API } from "~/type/graphql-api"
+import { YouTube_API } from "~/type/youtube-api"
+import { builder } from "../builder"
+import { GQLError } from "../util/gql-errors"
+import { ytFetch } from "../util/yt-fetch"
 
 builder.queryFields((t) => ({
 	comments: t.field({
-		type: ['Comment'],
+		type: ["Comment"],
 		args: {
 			videoId: t.arg.string({ required: true }),
 		},
@@ -14,15 +14,15 @@ builder.queryFields((t) => ({
 			if (!args.videoId) throw GQLError()
 
 			const params = new URLSearchParams({
-				maxResults: '24',
-				order: 'relevance',
-				part: 'snippet',
-				textFormat: 'plainText',
+				maxResults: "24",
+				order: "relevance",
+				part: "snippet",
+				textFormat: "plainText",
 				videoId: args.videoId,
 			})
 
 			const res = await ytFetch<YouTube_API.CommentThreadListResponse>(
-				'/commentThreads',
+				"/commentThreads",
 				params,
 			)
 

@@ -1,3 +1,3 @@
-import { atom } from 'jotai'
+import { atom } from "jotai"
 
-export const channelPageAtom = atom('')
+export const channelPageAtom = atom("")

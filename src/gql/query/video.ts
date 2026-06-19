@@ -1,12 +1,12 @@
-import { GQL_API } from '~/type/graphql-api'
-import { YouTube_API } from '~/type/youtube-api'
-import { builder } from '../builder'
-import { GQLError } from '../util/gql-errors'
-import { ytFetch } from '../util/yt-fetch'
+import { GQL_API } from "~/type/graphql-api"
+import { YouTube_API } from "~/type/youtube-api"
+import { builder } from "../builder"
+import { GQLError } from "../util/gql-errors"
+import { ytFetch } from "../util/yt-fetch"
 
 builder.queryFields((t) => ({
 	video: t.field({
-		type: 'Video',
+		type: "Video",
 		args: {
 			id: t.arg.string({ required: true }),
 		},
@@ -15,11 +15,11 @@ builder.queryFields((t) => ({
 
 			const params = new URLSearchParams({
 				id: args.id,
-				part: 'snippet,statistics',
+				part: "snippet,statistics",
 			})
 
 			const res = await ytFetch<YouTube_API.VideoListResponse>(
-				'/videos',
+				"/videos",
 				params,
 			)
 

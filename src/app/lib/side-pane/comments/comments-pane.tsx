@@ -1,8 +1,8 @@
-import { graphql } from 'gql.tada'
-import { useAtom } from 'jotai'
-import { useQuery } from 'urql'
-import { videoIdAtom } from '~/app/atom/video-id-atom'
-import { CommentCard } from './comment-card'
+import { graphql } from "gql.tada"
+import { useAtom } from "jotai"
+import { useQuery } from "urql"
+import { videoIdAtom } from "~/app/atom/video-id-atom"
+import { CommentCard } from "./comment-card"
 
 const COMMENTS_QUERY = graphql(`
 	query ($videoId: String!) {
@@ -29,7 +29,7 @@ export function CommentsPane() {
 
 	return (
 		<>
-			<div className='col gap-2 max-h-[800px] overflow-scroll'>
+			<div className="col gap-2 max-h-[800px] overflow-scroll">
 				{comments?.map((x) => (
 					<CommentCard
 						author={x.authorDisplayName}
