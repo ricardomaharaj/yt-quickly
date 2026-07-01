@@ -15,7 +15,7 @@ builder.queryFields((t) => ({
 			if (!args.q) throw GQLError()
 
 			const params = new URLSearchParams({
-				maxResults: "50",
+				maxResults: "48",
 				part: "id,snippet",
 				q: args.q,
 				type: "video",

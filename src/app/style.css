@@ -19,11 +19,11 @@ body {
 
 a,
 button {
-	@apply outline-none cursor-pointer hover:bg-surface/80;
+	@apply outline-none cursor-pointer;
 }
 
 input {
-	@apply outline-none hover:bg-surface/80;
+	@apply outline-none;
 }
 
 .col {

@@ -66,7 +66,8 @@ export function ChannelPane() {
 						<VideoCard
 							img={x.thumbnailUrl}
 							pri={x.title}
-							onClick={() => setVideoId(x.videoId || "")}
+							onImgClick={() => setVideoId(x.videoId || "")}
+							onPriClick={() => setVideoId(x.videoId || "")}
 						/>
 					))}
 				</div>

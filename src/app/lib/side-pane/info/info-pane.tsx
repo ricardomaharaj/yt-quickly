@@ -31,8 +31,10 @@ export function InfoPane() {
 
 	const vid = res?.data?.video
 
-	if (!channelId && res.data?.video?.channelId) {
-		setChannelId(res.data?.video?.channelId)
+	if (res.data?.video?.channelId) {
+		if (res.data.video.channelId !== channelId) {
+			setChannelId(res.data.video.channelId)
+		}
 	}
 
 	if (!vid?.title) return <></>

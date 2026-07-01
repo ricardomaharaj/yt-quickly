@@ -2,7 +2,9 @@ type Props = {
 	img?: string | null
 	pri?: string | null
 	sec?: string | null
-	onClick?: () => void
+	onImgClick?: () => void
+	onPriClick?: () => void
+	onSecClick?: () => void
 }
 
 export function VideoCard(props: Props) {
@@ -10,19 +12,26 @@ export function VideoCard(props: Props) {
 		<>
 			<button
 				className="col bg-surface"
-				onClick={props.onClick}
 				title={props.pri || ""}
+				type="button"
+				onClick={(e) => e.preventDefault()}
 			>
 				<div
 					className="aspect-video bg-center bg-cover"
 					style={{ backgroundImage: `url(${props.img})` }}
+					onClick={props.onImgClick}
 				/>
 
 				{props.pri && (
-					<div className="line-clamp-1 text-start">{props.pri}</div>
+					<div className="line-clamp-1 text-start" onClick={props.onPriClick}>
+						{props.pri}
+					</div>
 				)}
+
 				{props.sec && (
-					<div className="line-clamp-1 text-start">{props.sec}</div>
+					<div className="line-clamp-1 text-start" onClick={props.onSecClick}>
+						{props.sec}
+					</div>
 				)}
 			</button>
 		</>

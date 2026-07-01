@@ -7,6 +7,7 @@ import { searchQueryAtom } from "~/app/atom/search-query-atom"
 import { tabAtom } from "~/app/atom/tab-atom"
 import { videoIdAtom } from "~/app/atom/video-id-atom"
 import { Icon } from "~/app/const/icon"
+import { Tab } from "~/app/const/tab"
 import { Pager } from "~/app/lib/pager"
 import { VideoCard } from "~/app/lib/ui/video-card"
 
@@ -93,9 +94,15 @@ export function SearchPane() {
 							img={x.thumbnailUrl}
 							pri={x.title}
 							sec={x.channelTitle}
-							onClick={() => {
+							onImgClick={() => {
 								setVideoId(x.videoId || "")
+							}}
+							onPriClick={() => {
+								setVideoId(x.videoId || "")
+							}}
+							onSecClick={() => {
 								setChannelId(x.channelId || "")
+								setTab(Tab.CHANNEL)
 							}}
 						/>
 					))}

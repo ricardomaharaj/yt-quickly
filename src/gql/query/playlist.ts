@@ -15,7 +15,7 @@ builder.queryFields((t) => ({
 			if (!args.playlistId) throw GQLError()
 
 			const params = new URLSearchParams({
-				maxResults: "50",
+				maxResults: "15",
 				part: "snippet",
 				playlistId: args.playlistId,
 			})
